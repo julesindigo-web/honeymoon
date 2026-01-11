@@ -277,7 +277,10 @@ function setupEventListeners() {
     const dayTabs = document.querySelectorAll('.day-tab');
     dayTabs.forEach((tab, index) => {
         const dayNumber = index + 1;
-        tab.addEventListener('click', () => showDay(dayNumber));
+        tab.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+            showDay(dayNumber);
+        });
         console.log(`Setup listener for day ${dayNumber}`);
     });
     
@@ -286,15 +289,17 @@ function setupEventListeners() {
     const navLinks = document.querySelector('.nav-links');
     
     if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
             navLinks.classList.toggle('active');
         });
     }
     
-    // Close mobile menu when clicking on the ×
+    // Close mobile menu when clicking on overlay area only (not on links)
     if (navLinks) {
         navLinks.addEventListener('click', (e) => {
-            if (e.target === navLinks) {
+            // Only close if clicking directly on navLinks background, not on links or tabs
+            if (e.target === navLinks && !e.target.closest('.day-tab') && !e.target.closest('a')) {
                 navLinks.classList.remove('active');
             }
         });
@@ -304,14 +309,22 @@ function setupEventListeners() {
 // Show Day
 function showDay(dayNumber) {
     console.log(`Showing day ${dayNumber}`);
+    console.log('All day tabs:', document.querySelectorAll('.day-tab'));
+    console.log('All day contents:', document.querySelectorAll('.day-content'));
     
     // Hide all days
     for (let i = 1; i <= 4; i++) {
         const dayContent = document.getElementById(`day-${i}`);
         const dayTab = document.querySelectorAll('.day-tab')[i-1]; // Fix selector
         
-        if (dayContent) dayContent.classList.remove('active');
-        if (dayTab) dayTab.classList.remove('active');
+        if (dayContent) {
+            dayContent.classList.remove('active');
+            console.log(`Removed active from day-${i}`);
+        }
+        if (dayTab) {
+            dayTab.classList.remove('active');
+            console.log(`Removed active from tab ${i}`);
+        }
     }
     
     // Show selected day
@@ -321,10 +334,15 @@ function showDay(dayNumber) {
     if (selectedDay) {
         selectedDay.classList.add('active');
         console.log(`Day ${dayNumber} content activated`);
+    } else {
+        console.error(`Day ${dayNumber} content not found!`);
     }
+    
     if (selectedTab) {
         selectedTab.classList.add('active');
         console.log(`Day ${dayNumber} tab activated`);
+    } else {
+        console.error(`Day ${dayNumber} tab not found!`);
     }
 }
 
