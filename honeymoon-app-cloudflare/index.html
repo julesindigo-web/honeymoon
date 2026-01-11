@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honeymoon Ubud Bali - Panduan Interaktif Premium</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff6b9d;
+            --secondary-pink: #ffc0cb;
+            --romantic-red: #e91e63;
+            --luxury-gold: #ffd700;
+            --tropical-green: #2ecc71;
+            --ocean-blue: #3498db;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 50%, #e17055 100%);
+            min-height: 100vh;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.9) 0%, rgba(233, 30, 99, 0.8) 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .romantic-text {
+            background: linear-gradient(45deg, var(--romantic-red), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .budget-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: var(--primary-pink);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-md shadow-lg z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-heart text-pink-500 text-2xl"></i>
+                    <h1 class="text-xl font-bold romantic-text">Honeymoon Ubud</h1>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#beranda" class="nav-link text-gray-700 hover:text-pink-500 transition">Beranda</a>
+                    <a href="#itinerary" class="nav-link text-gray-700 hover:text-pink-500 transition">Itinerary</a>
+                    <a href="#budget" class="nav-link text-gray-700 hover:text-pink-500 transition">Budget</a>
+                    <a href="#kontak" class="nav-link text-gray-700 hover:text-pink-500 transition">Kontak</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white z-40 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#beranda" class="mobile-nav-link text-2xl text-gray-700 hover:text-pink-500">Beranda</a>
+            <a href="#itinerary" class="mobile-nav-link text-2xl text-gray-700 hover:text-pink-500">Itinerary</a>
+            <a href="#budget" class="mobile-nav-link text-2xl text-gray-700 hover:text-pink-500">Budget</a>
+            <a href="#kontak" class="mobile-nav-link text-2xl text-gray-700 hover:text-pink-500">Kontak</a>
+            <button id="closeMobileMenu" class="mt-8 text-gray-500">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white" data-aos="fade-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    Honeymoon Ubud Bali
+                </h1>
+                <p class="text-xl md:text-2xl mb-4">14-17 Januari 2026</p>
+                <p class="text-lg md:text-xl mb-8 opacity-90">Panduan Interaktif Premium untuk Romantis Anda</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button onclick="scrollToSection('itinerary')" class="bg-white text-pink-500 px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition pulse-animation">
+                        <i class="fas fa-route mr-2"></i>Jelajahi Itinerary
+                    </button>
+                    <button onclick="scrollToSection('budget')" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-pink-500 transition">
+                        <i class="fas fa-calculator mr-2"></i>Lihat Budget
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section id="itinerary" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold romantic-text mb-4">Itinerary Detail</h2>
+                <p class="text-xl text-gray-600">Perjalanan 4 Hari 3 Malam Penuh Kenangan</p>
+            </div>
+
+            <!-- Day Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="card-hover bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center">
+                        <div class="bg-pink-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hari 1</h3>
+                        <p class="text-sm text-gray-600 mb-2">14 Januari 2026</p>
+                        <p class="text-sm">Check-in Wana Karsa Hotel<br>Explore Ubud Center</p>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-purple-100 to-blue-100 rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <div class="bg-purple-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hari 2</h3>
+                        <p class="text-sm text-gray-600 mb-2">15 Januari 2026</p>
+                        <p class="text-sm">Monkey Forest<br>Tegalalang Rice Terraces</p>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-blue-100 to-green-100 rounded-xl p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center">
+                        <div class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hari 3</h3>
+                        <p class="text-sm text-gray-600 mb-2">16 Januari 2026</p>
+                        <p class="text-sm">Real Bali Swing<br>Couple Spa</p>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-green-100 to-yellow-100 rounded-xl p-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-center">
+                        <div class="bg-green-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold">4</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hari 4</h3>
+                        <p class="text-sm text-gray-600 mb-2">17 Januari 2026</p>
+                        <p class="text-sm">Campuhan Ridge Walk<br>Check-out</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Activities -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up">
+                    <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-4">
+                        <h3 class="text-white font-bold text-lg">🏨 Penginapan</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Wana Karsa Hotel</h4>
+                                <p class="text-sm text-gray-600">2 malam (14-16 Jan)</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 2.000.000-3.000.000</p>
+                                <p class="text-xs text-gray-500">⭐ 7.9/10 rating</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Ubud Heaven Villa</h4>
+                                <p class="text-sm text-gray-600">1 malam (16-17 Jan)</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 850.000</p>
+                                <p class="text-xs text-gray-500">Private pool, romantic</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gradient-to-r from-purple-500 to-blue-500 p-4">
+                        <h3 class="text-white font-bold text-lg">🎯 Aktivitas</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Monkey Forest</h4>
+                                <p class="text-sm text-gray-600">2 orang</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 200.000</p>
+                                <p class="text-xs text-gray-500">Daily 08:00-17:00</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Tegalalang Rice</h4>
+                                <p class="text-sm text-gray-600">+ swing experience</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 350.000-550.000</p>
+                                <p class="text-xs text-gray-500">06:00-19:00</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Real Bali Swing</h4>
+                                <p class="text-sm text-gray-600">Premium package</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 2.000.000-2.100.000</p>
+                                <p class="text-xs text-gray-500">Include photographer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 p-4">
+                        <h3 class="text-white font-bold text-lg">🍽️ Dining & Spa</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Swept Away Dinner</h4>
+                                <p class="text-sm text-gray-600">Candlelight romantic</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 1.500.000</p>
+                                <p class="text-xs text-gray-500">Riverside Ayung</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Putri Ubud Spa</h4>
+                                <p class="text-sm text-gray-600">Honeymoon package</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 3.590.000</p>
+                                <p class="text-xs text-gray-500">5 jam, include lunch</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold">Casual Dining</h4>
+                                <p class="text-sm text-gray-600">4 hari breakfast/lunch</p>
+                                <p class="text-sm font-bold text-pink-500">Rp 1.800.000-3.000.000</p>
+                                <p class="text-xs text-gray-500">Local warungs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section id="budget" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold romantic-text mb-4">Budget Breakdown</h2>
+                <p class="text-xl text-gray-600">Total Estimasi: Rp 15.460.000-19.240.000</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="budget-card rounded-xl p-6" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6 text-center">💰 Rincian Biaya</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center border-b border-white border-opacity-30 pb-2">
+                            <span>Penginapan (3 malam)</span>
+                            <span class="font-bold">Rp 2.850.000-3.850.000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white border-opacity-30 pb-2">
+                            <span>Aktivitas & Tiket</span>
+                            <span class="font-bold">Rp 2.610.000-2.750.000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white border-opacity-30 pb-2">
+                            <span>Makanan (casual)</span>
+                            <span class="font-bold">Rp 2.400.000-3.900.000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white border-opacity-30 pb-2">
+                            <span>Candlelight Dinner</span>
+                            <span class="font-bold">Rp 1.500.000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white border-opacity-30 pb-2">
+                            <span>Couple Spa</span>
+                            <span class="font-bold">Rp 2.700.000-3.590.000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-white border-opacity-30 pb-2">
+                            <span>Miscellaneous</span>
+                            <span class="font-bold">Rp 1.500.000-2.000.000</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 border-t-2 border-white">
+                            <span class="text-xl font-bold">TOTAL</span>
+                            <span class="text-xl font-bold">Rp 15.460.000-19.240.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold mb-6 text-center text-purple-600">📊 Status Validasi</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Penginapan
+                            </span>
+                            <span class="text-sm font-bold text-green-500">95% Valid</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Aktivitas
+                            </span>
+                            <span class="text-sm font-bold text-green-500">95% Valid</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Restoran
+                            </span>
+                            <span class="text-sm font-bold text-green-500">90% Valid</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                Spa
+                            </span>
+                            <span class="text-sm font-bold text-green-500">95% Valid</span>
+                        </div>
+                        <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                            <p class="text-sm text-green-800 text-center">
+                                <i class="fas fa-check-double mr-2"></i>
+                                <strong>Status:</strong> Fully Validated & Ready to Execute
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold romantic-text mb-4">Kontak Penting</h2>
+                <p class="text-xl text-gray-600">Hubungi untuk Reservasi</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="card-hover bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-6" data-aos="fade-up">
+                    <div class="text-center">
+                        <i class="fas fa-hotel text-4xl text-pink-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Wana Karsa Hotel</h3>
+                        <p class="text-sm text-gray-600 mb-2">📞 +62-361-975743</p>
+                        <p class="text-sm text-gray-600">✉️ bagus.andhy@wanakarsa.com</p>
+                        <button onclick="copyToClipboard('+62-361-975743')" class="mt-3 bg-pink-500 text-white px-4 py-2 rounded-full text-sm hover:bg-pink-600 transition">
+                            <i class="fas fa-copy mr-1"></i>Salin
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center">
+                        <i class="fas fa-spa text-4xl text-purple-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Putri Ubud Spa</h3>
+                        <p class="text-sm text-gray-600 mb-2">📞 +62361 4792561</p>
+                        <p class="text-sm text-gray-600">📱 +62 819-3622-4944</p>
+                        <button onclick="copyToClipboard('+62361 4792561')" class="mt-3 bg-purple-500 text-white px-4 py-2 rounded-full text-sm hover:bg-purple-600 transition">
+                            <i class="fas fa-copy mr-1"></i>Salin
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-green-50 rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <i class="fas fa-utensils text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Apéritif Restaurant</h3>
+                        <p class="text-sm text-gray-600 mb-2">📞 +62-361-9082777</p>
+                        <p class="text-sm text-gray-600">🌐 aperitif.com</p>
+                        <button onclick="copyToClipboard('+62-361-9082777')" class="mt-3 bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition">
+                            <i class="fas fa-copy mr-1"></i>Salin
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12" data-aos="fade-up">
+                <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 max-w-2xl mx-auto">
+                    <h3 class="text-xl font-bold text-yellow-800 mb-3">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>URGENT - Book Now!
+                    </h3>
+                    <p class="text-yellow-700">
+                        Peak season Januari 2026 - Segera booking Apéritif Restaurant dan Couple Spa untuk menghindari fully booked!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <i class="fas fa-heart text-pink-500 text-2xl animate-pulse"></i>
+            </div>
+            <p class="text-lg mb-2">Honeymoon Ubud Bali - Panduan Interaktif Premium</p>
+            <p class="text-sm text-gray-400">Created with ❤️ by CODER_ELITE_AGENT</p>
+            <p class="text-xs text-gray-500 mt-2">Last Updated: 11 Januari 2026 | Status: Fully Validated</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

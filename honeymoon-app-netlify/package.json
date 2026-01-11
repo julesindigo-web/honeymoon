@@ -1,0 +1,17 @@
+{
+  "name": "honeymoon-ubud-netlify",
+  "version": "1.0.0",
+  "description": "Interactive Honeymoon Web App - Netlify Version",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Build complete'",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": ["honeymoon", "ubud", "bali", "travel", "interactive"],
+  "author": "CODER_ELITE_AGENT",
+  "license": "MIT",
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}

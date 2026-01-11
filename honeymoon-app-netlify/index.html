@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honeymoon Ubud Bali - Interactive Premium Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #e91e63;
+            --accent: #ffd700;
+            --tropical: #2ecc71;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(255,107,157,0.95), rgba(233,30,99,0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,96C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,107,157,0.5); }
+            50% { box-shadow: 0 0 40px rgba(255,107,157,0.8); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .interactive-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: -8px;
+            top: 5px;
+        }
+
+        .budget-progress {
+            transition: width 0.5s ease;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            animation: confetti-fall 3s linear;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass-effect z-50 px-4 py-3">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-white text-2xl floating"></i>
+                <span class="text-white font-bold text-xl">Honeymoon Ubud</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-white hover:text-yellow-300 transition">Beranda</a>
+                <a href="#itinerary" class="text-white hover:text-yellow-300 transition">Itinerary</a>
+                <a href="#budget" class="text-white hover:text-yellow-300 transition">Budget</a>
+                <a href="#gallery" class="text-white hover:text-yellow-300 transition">Galeri</a>
+                <a href="#contact" class="text-white hover:text-yellow-300 transition">Kontak</a>
+            </div>
+            <button id="menuToggle" class="text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-gradient-to-br from-purple-600 to-pink-600 z-40 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-white text-2xl mobile-link">Beranda</a>
+            <a href="#itinerary" class="text-white text-2xl mobile-link">Itinerary</a>
+            <a href="#budget" class="text-white text-2xl mobile-link">Budget</a>
+            <a href="#gallery" class="text-white text-2xl mobile-link">Galeri</a>
+            <a href="#contact" class="text-white text-2xl mobile-link">Kontak</a>
+            <button id="closeMenu" class="text-white text-3xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen hero-bg flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 floating">
+                Honeymoon Ubud
+            </h1>
+            <p class="text-2xl md:text-3xl mb-4">14-17 Januari 2026</p>
+            <p class="text-xl mb-8 opacity-90">Interactive Premium Experience</p>
+            
+            <!-- Countdown Timer -->
+            <div id="countdown" class="mb-8"></div>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button onclick="startInteractiveTour()" class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold hover:scale-105 transition pulse-glow">
+                    <i class="fas fa-play mr-2"></i>Start Tour
+                </button>
+                <button onclick="scrollToSection('itinerary')" class="glass-effect text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition">
+                    <i class="fas fa-map mr-2"></i>Explore
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Itinerary -->
+    <section id="itinerary" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center gradient-text mb-12">Interactive Itinerary</h2>
+            
+            <!-- Day Selector -->
+            <div class="flex justify-center mb-8">
+                <div class="bg-gray-100 rounded-full p-1 flex space-x-2">
+                    <button onclick="showDay(1)" class="day-btn px-6 py-2 rounded-full bg-pink-500 text-white">Day 1</button>
+                    <button onclick="showDay(2)" class="day-btn px-6 py-2 rounded-full hover:bg-gray-200">Day 2</button>
+                    <button onclick="showDay(3)" class="day-btn px-6 py-2 rounded-full hover:bg-gray-200">Day 3</button>
+                    <button onclick="showDay(4)" class="day-btn px-6 py-2 rounded-full hover:bg-gray-200">Day 4</button>
+                </div>
+            </div>
+
+            <!-- Day Content -->
+            <div id="dayContent" class="max-w-4xl mx-auto">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Calculator -->
+    <section id="budget" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center gradient-text mb-12">Budget Calculator</h2>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Customize Your Budget</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label>Accommodation</label>
+                                <input type="range" id="accommodation" min="2000000" max="4000000" value="2850000" class="w-full">
+                                <span id="accommodation-value">Rp 2.850.000</span>
+                            </div>
+                            
+                            <div>
+                                <label>Activities</label>
+                                <input type="range" id="activities" min="2000000" max="3000000" value="2610000" class="w-full">
+                                <span id="activities-value">Rp 2.610.000</span>
+                            </div>
+                            
+                            <div>
+                                <label>Dining</label>
+                                <input type="range" id="dining" min="2000000" max="5000000" value="3900000" class="w-full">
+                                <span id="dining-value">Rp 3.900.000</span>
+                            </div>
+                            
+                            <div>
+                                <label>Spa & Wellness</label>
+                                <input type="range" id="spa" min="2000000" max="4000000" value="3590000" class="w-full">
+                                <span id="spa-value">Rp 3.590.000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Budget Summary</h3>
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl p-6 text-white">
+                            <div class="text-3xl font-bold mb-4">
+                                Total: <span id="totalBudget">Rp 12.950.000</span>
+                            </div>
+                            <div class="w-full bg-white bg-opacity-30 rounded-full h-4">
+                                <div id="budgetBar" class="bg-white h-4 rounded-full budget-progress" style="width: 76%"></div>
+                            </div>
+                            <p class="mt-2 text-sm">76% of Rp 17.000.000 budget</p>
+                        </div>
+                        
+                        <button onclick="saveBudget()" class="mt-4 w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition">
+                            <i class="fas fa-save mr-2"></i>Save Budget Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Gallery -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center gradient-text mb-12">Virtual Gallery</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="interactive-card bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl p-6 text-center">
+                    <i class="fas fa-hotel text-6xl text-pink-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Luxury Hotels</h3>
+                    <p class="text-gray-600">Wana Karsa & Private Villa</p>
+                </div>
+                
+                <div class="interactive-card bg-gradient-to-br from-purple-100 to-blue-100 rounded-xl p-6 text-center">
+                    <i class="fas fa-swimming-pool text-6xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Amazing Activities</h3>
+                    <p class="text-gray-600">Swing, Monkey Forest, Rice Terraces</p>
+                </div>
+                
+                <div class="interactive-card bg-gradient-to-br from-blue-100 to-green-100 rounded-xl p-6 text-center">
+                    <i class="fas fa-spa text-6xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Romantic Spa</h3>
+                    <p class="text-gray-600">Couples Treatment & Wellness</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center mb-12">Quick Contact</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="glass-effect rounded-xl p-6 text-center">
+                    <i class="fas fa-hotel text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Wana Karsa</h3>
+                    <p class="text-sm mb-3">+62-361-975743</p>
+                    <button onclick="callNumber('+62-361-975743')" class="bg-white text-purple-600 px-4 py-2 rounded-full text-sm">
+                        <i class="fas fa-phone mr-1"></i>Call
+                    </button>
+                </div>
+                
+                <div class="glass-effect rounded-xl p-6 text-center">
+                    <i class="fas fa-spa text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Putri Spa</h3>
+                    <p class="text-sm mb-3">+62361 4792561</p>
+                    <button onclick="callNumber('+62361 4792561')" class="bg-white text-purple-600 px-4 py-2 rounded-full text-sm">
+                        <i class="fas fa-phone mr-1"></i>Call
+                    </button>
+                </div>
+                
+                <div class="glass-effect rounded-xl p-6 text-center">
+                    <i class="fas fa-utensils text-3xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Apéritif</h3>
+                    <p class="text-sm mb-3">+62-361-9082777</p>
+                    <button onclick="callNumber('+62-361-9082777')" class="bg-white text-purple-600 px-4 py-2 rounded-full text-sm">
+                        <i class="fas fa-phone mr-1"></i>Call
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg mb-2">Created with ❤️ by CODER_ELITE_AGENT</p>
+            <p class="text-sm text-gray-400">© 2026 Honeymoon Ubud Bali - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

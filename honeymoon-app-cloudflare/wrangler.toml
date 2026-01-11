@@ -1,0 +1,22 @@
+name = "honeymoon-ubud-cloudflare"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "honeymoon-ubud-cloudflare-prod"
+
+[env.staging]
+name = "honeymoon-ubud-cloudflare-staging"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[build]
+command = "echo 'No build command needed'"
+
+[env.production.vars]
+ENVIRONMENT = "production"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
