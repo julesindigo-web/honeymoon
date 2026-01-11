@@ -359,11 +359,91 @@ window.addEventListener('load', () => {
     }
 });
 
-// PWA Service Worker Registration
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').then(registration => {
-        console.log('ServiceWorker registration successful');
-    }).catch(error => {
-        console.log('ServiceWorker registration failed');
+// Gallery Functions
+function filterGallery(category) {
+    const items = document.querySelectorAll('.gallery-item');
+    const buttons = document.querySelectorAll('.gallery-filter-btn');
+    
+    // Update button states
+    buttons.forEach(btn => {
+        btn.classList.remove('bg-pink-500', 'text-white');
+        btn.classList.add('hover:bg-gray-200');
+    });
+    
+    event.target.classList.add('bg-pink-500', 'text-white');
+    event.target.classList.remove('hover:bg-gray-200');
+    
+    // Filter items
+    items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            }, 100);
+        } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                item.style.display = 'none';
+            }, 300);
+        }
     });
 }
+
+function openModal(imageSrc, caption) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const captionText = document.getElementById('caption');
+    
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+    captionText.innerHTML = `<h3 class="text-2xl font-bold mb-2">${caption}</h3>`;
+    
+    // Add loading animation
+    modalImg.style.opacity = '0';
+    modalImg.onload = function() {
+        modalImg.style.opacity = '1';
+    };
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+
+// Add keyboard navigation for modal
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Enhanced gallery animations
+function initializeGallery() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+}
+
+// Initialize gallery when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initializeGallery();
+});

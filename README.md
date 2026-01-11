@@ -10,8 +10,8 @@ Aplikasi web interaktif premium untuk panduan honeymoon di Ubud Bali, dikembangk
 - **Features**: Premium honeymoon theme, AOS animations, timeline view
 
 ### **Netlify (Enhanced Interactive Version)**
-- **Production**: https://effulgent-moxie-c4c65e.netlify.app
-- **Features**: Interactive budget calculator, day selector, confetti effects
+- **Production**: https://melkyfannyhoneymoon.netlify.app
+- **Features**: Interactive budget calculator, day selector, confetti effects, real photo gallery
 
 ---
 
