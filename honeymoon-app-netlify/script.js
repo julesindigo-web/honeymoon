@@ -273,77 +273,144 @@ function setupMobileMenu() {
 
 // Setup Event Listeners
 function setupEventListeners() {
+    console.log('Setting up event listeners...');
+    
     // Day tabs - Fix event listener setup
     const dayTabs = document.querySelectorAll('.day-tab');
+    console.log(`Found ${dayTabs.length} day tabs`);
+    
     dayTabs.forEach((tab, index) => {
         const dayNumber = index + 1;
-        tab.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event bubbling
+        // Remove existing listeners to prevent duplicates
+        tab.removeEventListener('click', tab._clickHandler);
+        
+        // Create new handler
+        tab._clickHandler = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log(`Day tab ${dayNumber} clicked`);
             showDay(dayNumber);
-        });
+        };
+        
+        tab.addEventListener('click', tab._clickHandler);
         console.log(`Setup listener for day ${dayNumber}`);
     });
     
-    // Mobile menu
+    // Mobile menu button
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.querySelector('.nav-links');
     
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event bubbling
+    if (mobileMenuBtn && navLinks) {
+        // Remove existing listener
+        mobileMenuBtn.removeEventListener('click', mobileMenuBtn._clickHandler);
+        
+        mobileMenuBtn._clickHandler = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile menu button clicked');
             navLinks.classList.toggle('active');
-        });
+        };
+        
+        mobileMenuBtn.addEventListener('click', mobileMenuBtn._clickHandler);
     }
     
-    // Close mobile menu when clicking on overlay area only (not on links)
+    // Close mobile menu when clicking on close button area
     if (navLinks) {
-        navLinks.addEventListener('click', (e) => {
-            // Only close if clicking directly on navLinks background, not on links or tabs
-            if (e.target === navLinks && !e.target.closest('.day-tab') && !e.target.closest('a')) {
+        // Remove existing listener
+        navLinks.removeEventListener('click', navLinks._clickHandler);
+        
+        navLinks._clickHandler = (e) => {
+            // Check if clicking on the close button area (top-right corner)
+            const rect = navLinks.getBoundingClientRect();
+            const closeArea = {
+                top: rect.top + 16,
+                right: rect.right - 16,
+                width: 40,
+                height: 40
+            };
+            
+            if (e.clientX >= closeArea.right - closeArea.width && 
+                e.clientX <= closeArea.right &&
+                e.clientY >= closeArea.top && 
+                e.clientY <= closeArea.top + closeArea.height) {
+                console.log('Close button clicked');
                 navLinks.classList.remove('active');
+                return;
             }
-        });
+            
+            // Close if clicking on nav links (not on day tabs)
+            if (e.target.tagName === 'A' && navLinks.classList.contains('active')) {
+                console.log('Nav link clicked, closing menu');
+                setTimeout(() => navLinks.classList.remove('active'), 300);
+            }
+        };
+        
+        navLinks.addEventListener('click', navLinks._clickHandler);
     }
+    
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+    
+    console.log('Event listeners setup complete');
 }
 
 // Show Day
 function showDay(dayNumber) {
-    console.log(`Showing day ${dayNumber}`);
-    console.log('All day tabs:', document.querySelectorAll('.day-tab'));
-    console.log('All day contents:', document.querySelectorAll('.day-content'));
+    console.log(`=== SHOWING DAY ${dayNumber} ===`);
     
-    // Hide all days
-    for (let i = 1; i <= 4; i++) {
-        const dayContent = document.getElementById(`day-${i}`);
-        const dayTab = document.querySelectorAll('.day-tab')[i-1]; // Fix selector
+    // Validate day number
+    if (dayNumber < 1 || dayNumber > 4) {
+        console.error(`Invalid day number: ${dayNumber}`);
+        return;
+    }
+    
+    // Get all elements
+    const allDayContents = document.querySelectorAll('.day-content');
+    const allDayTabs = document.querySelectorAll('.day-tab');
+    
+    console.log(`Found ${allDayContents.length} day contents and ${allDayTabs.length} day tabs`);
+    
+    // Hide all days and remove active class from tabs
+    allDayContents.forEach((content, index) => {
+        content.classList.remove('active');
+        content.style.display = 'none';
+        console.log(`Hidden day ${index + 1} content`);
+    });
+    
+    allDayTabs.forEach((tab, index) => {
+        tab.classList.remove('active');
+        console.log(`Removed active from tab ${index + 1}`);
+    });
+    
+    // Show selected day with delay for animation
+    setTimeout(() => {
+        const selectedDay = document.getElementById(`day-${dayNumber}`);
+        const selectedTab = document.querySelectorAll('.day-tab')[dayNumber - 1];
         
-        if (dayContent) {
-            dayContent.classList.remove('active');
-            console.log(`Removed active from day-${i}`);
+        if (selectedDay) {
+            selectedDay.classList.add('active');
+            selectedDay.style.display = 'block';
+            console.log(`✅ Day ${dayNumber} content activated and displayed`);
+            
+            // Scroll to day content
+            selectedDay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            console.error(`❌ Day ${dayNumber} content not found!`);
         }
-        if (dayTab) {
-            dayTab.classList.remove('active');
-            console.log(`Removed active from tab ${i}`);
+        
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+            console.log(`✅ Day ${dayNumber} tab activated`);
+        } else {
+            console.error(`❌ Day ${dayNumber} tab not found!`);
         }
-    }
+    }, 100);
     
-    // Show selected day
-    const selectedDay = document.getElementById(`day-${dayNumber}`);
-    const selectedTab = document.querySelectorAll('.day-tab')[dayNumber-1]; // Fix selector
-    
-    if (selectedDay) {
-        selectedDay.classList.add('active');
-        console.log(`Day ${dayNumber} content activated`);
-    } else {
-        console.error(`Day ${dayNumber} content not found!`);
-    }
-    
-    if (selectedTab) {
-        selectedTab.classList.add('active');
-        console.log(`Day ${dayNumber} tab activated`);
-    } else {
-        console.error(`Day ${dayNumber} tab not found!`);
-    }
+    console.log(`=== DAY ${dayNumber} SWITCH COMPLETE ===`);
 }
 
 // Scroll to Section
@@ -432,3 +499,40 @@ document.addEventListener('click', (e) => {
         closeModal();
     }
 });
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 DOM Loaded - Initializing Honeymoon App...');
+    
+    // Setup all event listeners
+    setupEventListeners();
+    
+    // Initialize countdown
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // Log initial state
+    console.log('📊 Initial State Check:');
+    console.log(`- Day tabs found: ${document.querySelectorAll('.day-tab').length}`);
+    console.log(`- Day contents found: ${document.querySelectorAll('.day-content').length}`);
+    console.log(`- Mobile menu button: ${document.getElementById('mobileMenuBtn') ? '✅' : '❌'}`);
+    console.log(`- Nav links: ${document.querySelector('.nav-links') ? '✅' : '❌'}`);
+    console.log(`- Modal: ${document.getElementById('modal') ? '✅' : '❌'}`);
+    
+    // Setup modal close listeners
+    const modalCloseBtn = document.querySelector('.modal-close');
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
+    
+    console.log('✅ Initialization Complete!');
+});
+
+// Fallback initialization if DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    // DOM is still loading
+} else {
+    // DOM is already loaded
+    console.log('🔄 DOM already loaded - Running fallback initialization...');
+    setupEventListeners();
+}
