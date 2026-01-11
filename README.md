@@ -3,6 +3,18 @@
 ## 📋 Overview
 Aplikasi web interaktif premium untuk panduan honeymoon di Ubud Bali, dikembangkan dengan teknologi modern dan tema visual yang romantis.
 
+## 🌐 Live URLs
+
+### **Cloudflare Pages (Premium Version)**
+- **Production**: https://d323630a.honeymoon-ubud-cloudflare.pages.dev
+- **Features**: Premium honeymoon theme, AOS animations, timeline view
+
+### **Netlify (Enhanced Interactive Version)**
+- **Production**: https://effulgent-moxie-c4c65e.netlify.app
+- **Features**: Interactive budget calculator, day selector, confetti effects
+
+---
+
 ## 🚀 Deployment Guide
 
 ### 🌐 Cloudflare Pages Deployment
