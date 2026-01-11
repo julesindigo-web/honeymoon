@@ -1,449 +1,389 @@
-// Interactive Day Data
-const dayData = {
-    1: {
-        title: "Hari 1 - Arrival & Exploration",
-        date: "14 Januari 2026",
-        activities: [
-            { time: "14:00", activity: "Check-in Wana Karsa Hotel", icon: "fa-hotel", color: "pink" },
-            { time: "16:00", activity: "Explore Ubud Center", icon: "fa-walking", color: "purple" },
-            { time: "19:00", activity: "Dinner at local warung", icon: "fa-utensils", color: "blue" },
-            { time: "20:30", activity: "Evening walk around Ubud", icon: "fa-moon", color: "indigo" }
+// Honeymoon Web App - Interactive JavaScript
+
+// Modal Data
+const modalData = {
+    'wana-karsa': {
+        title: 'Wana Karsa Ubud Hotel',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150556/search_images/fe3132c2494ef656974b7b1fa4e8653a47ec6fbf.jpg',
+        description: 'Hotel bintang 4 yang terletak strategis di Jalan Monkey Forest, hanya 2 menit jalan kaki ke Ubud Monkey Forest Sanctuary. Pilihan sempurna untuk honeymoon dengan suasana romantis dan fasilitas lengkap. Rating 7.9/10 dari 31 reviews terverifikasi di Trip.com.',
+        details: [
+            { label: 'Harga per Malam', value: 'Rp 1.000.000 - 1.500.000' },
+            { label: 'Lokasi', value: 'Jl. Monkey Forest, Ubud' },
+            { label: 'Rating', value: '⭐⭐⭐⭐ (7.9/10)' },
+            { label: 'Check-in/Out', value: '14:00 / 11:00' },
+            { label: 'Fasilitas', value: 'Kolam renang, WiFi, Restoran' },
+            { label: 'Status', value: '✅ Verified & Available' }
         ],
-        highlights: ["Romantic hotel check-in", "First taste of Ubud", "Local cuisine experience"]
+        cta: [
+            { text: '📞 Hubungi: +62-361-975743', url: 'tel:+62-361-975743' },
+            { text: '🔗 Booking di Traveloka', url: 'https://www.traveloka.com' }
+        ]
     },
-    2: {
-        title: "Hari 2 - Nature & Culture",
-        date: "15 Januari 2026",
-        activities: [
-            { time: "08:00", activity: "Breakfast at hotel", icon: "fa-coffee", color: "yellow" },
-            { time: "09:30", activity: "Monkey Forest Sanctuary", icon: "fa-paw", color: "green" },
-            { time: "12:00", activity: "Lunch at Bee Cafe", icon: "fa-utensils", color: "orange" },
-            { time: "14:00", activity: "Tegalalang Rice Terraces", icon: "fa-mountain", color: "lime" },
-            { time: "18:00", activity: "Sunset at Tegalalang", icon: "fa-sun", color: "red" }
+    'ubud-heaven': {
+        title: 'Ubud Heaven Villa - Private Pool',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150568/search_images/0e75a712dc7cabeb57a02d3656bab84bb9d2e8e7.jpg',
+        description: 'Villa mewah pribadi dengan kolam renang eksklusif, sempurna untuk momen romantis honeymoon Anda. Ukuran 300 m² dengan suasana yang intimate dan taman indah. Private pool dan romantic setup membuat pengalaman honeymoon tak terlupakan.',
+        details: [
+            { label: 'Harga per Malam', value: 'Rp 850.000' },
+            { label: 'Lokasi', value: 'Area Penestanan, Ubud' },
+            { label: 'Ukuran', value: '300 m²' },
+            { label: 'Private Pool', value: 'Ya, eksklusif' },
+            { label: 'WiFi', value: 'Tersedia' },
+            { label: 'Fasilitas', value: 'Garden, Romantic Setup' }
         ],
-        highlights: ["Meet the monkeys", "Stunning rice terraces", "Perfect sunset view"]
+        cta: [
+            { text: '🔗 Booking di Airbnb', url: 'https://www.airbnb.com' },
+            { text: '🔗 Booking di Booking.com', url: 'https://www.booking.com' }
+        ]
     },
-    3: {
-        title: "Hari 3 - Adventure & Romance",
-        date: "16 Januari 2026",
-        activities: [
-            { time: "08:00", activity: "Breakfast", icon: "fa-coffee", color: "yellow" },
-            { time: "09:00", activity: "Real Bali Swing Bongkasa", icon: "fa-star", color: "pink" },
-            { time: "12:30", activity: "Lunch included", icon: "fa-utensils", color: "orange" },
-            { time: "14:00", activity: "Move to private villa", icon: "fa-home", color: "purple" },
-            { time: "15:00", activity: "Couple spa at Putri Ubud", icon: "fa-spa", color: "blue" },
-            { time: "19:00", activity: "Candlelight dinner", icon: "fa-heart", color: "red" }
+    'monkey-forest': {
+        title: 'Ubud Monkey Forest Sanctuary',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150556/search_images/295fee340eef8c28b07ecc19bff934e235771768.jpg',
+        description: 'Sanctuary monyet suci dengan 600+ populasi monyet, 3 kuil Hindu bersejarah (Pura Gunung Lebah), dan 186 spesies pohon. Hutan yang asri dan pemandangan alam yang menenangkan menjadikan ini destinasi wajib kunjung untuk honeymoon Anda. Nikmati pengalaman berinteraksi dengan monyet jinak dalam lingkungan yang natural.',
+        details: [
+            { label: 'Tiket Masuk', value: 'Rp 100.000/orang (weekday)' },
+            { label: 'Tanggal Kunjung', value: '16 Januari (Kamis)' },
+            { label: 'Jam Buka', value: '08:00 - 17:00' },
+            { label: 'Durasi', value: '1.5 - 2 jam' },
+            { label: 'Monyet', value: '600+ populasi jinak' },
+            { label: 'Status', value: '✅ Always Open' }
         ],
-        highlights: ["Adrenaline swing experience", "Luxury spa treatment", "Romantic dinner"]
+        cta: [
+            { text: '🎟️ Beli Tiket di Traveloka', url: 'https://www.traveloka.com' },
+            { text: '📍 Lihat Lokasi di Maps', url: 'https://maps.google.com' }
+        ]
     },
-    4: {
-        title: "Hari 4 - Relaxation & Departure",
-        date: "17 Januari 2026",
-        activities: [
-            { time: "08:00", activity: "Breakfast at villa", icon: "fa-coffee", color: "yellow" },
-            { time: "09:00", activity: "Campuhan Ridge Walk", icon: "fa-hiking", color: "green" },
-            { time: "11:00", activity: "Last minute shopping", icon: "fa-shopping-bag", color: "purple" },
-            { time: "12:00", activity: "Check-out & departure", icon: "fa-plane", color: "blue" }
+    'tegalalang': {
+        title: 'Tegalalang Rice Terraces',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150556/search_images/c7553638b996a5b06b4345ae37e778d4db693f44.jpg',
+        description: 'Sawah terasering ikonik Ubud dengan pemandangan spektakuler yang sering dijadikan lokasi foto pre-wedding dan honeymoon. Pemandangan hijau yang indah, terutama di pagi atau sore hari. Tempat sempurna untuk mengabadikan momen romantis dengan pasangan Anda di tengah alam Bali yang asli.',
+        details: [
+            { label: 'Tiket Masuk', value: 'Rp 25.000/orang' },
+            { label: 'Jam Buka', value: '06:00 - 19:00' },
+            { label: 'Best Time', value: 'Pagi (06:30-09:00) atau Sore (16:00-18:00)' },
+            { label: 'Durasi', value: '2 - 3 jam' },
+            { label: 'Aktivitas', value: 'Foto, Jalan santai, Lunch' },
+            { label: 'Status', value: '✅ Always Open' }
         ],
-        highlights: ["Morning nature walk", "Souvenir shopping", "Departure with memories"]
+        cta: [
+            { text: '🎟️ Beli Tiket Online', url: 'https://www.traveloka.com' },
+            { text: '📸 Lihat Foto dari Wisatawan', url: 'https://www.tripadvisor.com' }
+        ]
+    },
+    'bali-swing': {
+        title: 'Real Bali Swing Bongkasa',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150557/search_images/2ff79f11b888e7133442fd24cbf2bf018d21d695.jpg',
+        description: 'Pengalaman swing premium dengan 12 ayunan unik termasuk tandem romantic swing yang sempurna untuk couple honeymoon. Dilengkapi dengan Instagram nests untuk foto sempurna, lunch buffet, dan asuransi. Data harga diupdate resmi 3 Januari 2026 oleh AdeeVaTours (official partner Real Bali Swing).',
+        details: [
+            { label: 'Paket Premium', value: 'Rp 650.000/orang' },
+            { label: 'Included', value: '12 swings, lunch, drinks, insurance' },
+            { label: 'Tandem Swing', value: 'Ya (romantic untuk couple)' },
+            { label: 'Durasi', value: '2.5 - 3 jam' },
+            { label: 'Shuttle', value: 'Depart 09:00, 11:00, 13:00, 15:00' },
+            { label: 'Lokasi', value: 'Bongkasa (30-40 min dari Ubud)' }
+        ],
+        cta: [
+            { text: '🔥 BOOK SEKARANG (Peak Season)', url: 'https://adeevatours.com' },
+            { text: '📞 WhatsApp untuk Info', url: 'https://wa.me/6281234567890' }
+        ]
+    },
+    'campuhan': {
+        title: 'Campuhan Ridge Walk',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150556/search_images/1546e17ce43a6b30596c6d37cf58b6c9c68abf6c.jpg',
+        description: 'Jalan setapak romantis sepanjang 2,5 km melalui lembah hijau, sungai, dan pemandangan gunung yang menakjubkan. Tempat terbaik untuk sunrise atau sunset photoshoot honeymoon Anda. Gratis tanpa biaya masuk, hanya memerlukan biaya transport Gojek/Grab. Jangan lewatkan kesempatan untuk berfoto di tengah alam Ubud yang asri.',
+        details: [
+            { label: 'Tiket Masuk', value: '🎉 GRATIS' },
+            { label: 'Best Time', value: 'Pagi (07:00-09:00) untuk Sunrise' },
+            { label: 'Distance', value: '2,5 km' },
+            { label: 'Durasi', value: '1 - 1.5 jam' },
+            { label: 'Transport', value: 'Rp 40.000-80.000 (Gojek/Grab)' },
+            { label: 'Akses', value: '✅ Selalu buka' }
+        ],
+        cta: [
+            { text: '🗺️ Lihat di Google Maps', url: 'https://maps.google.com' },
+            { text: '📸 Lihat Review & Foto', url: 'https://www.tripadvisor.com' }
+        ]
+    },
+    'aperitif': {
+        title: 'Apéritif Restaurant - Fine Dining',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1767804675/search_images/3350fa956932d0f47b879af5dc1c932c478c5714.jpg',
+        description: 'Restoran fine dining premium dengan konsep 1920s romantis yang sempurna untuk candlelight dinner honeymoon Anda. Menu 7-course degustation dengan wine pairing options, romantic candlelight setup penuh, dan personalized service. Pemandangan tropical jungle dengan suasana intimate membuat pengalaman dining yang unforgettable.',
+        details: [
+            { label: 'Menu 7-Course', value: 'Rp 1.900.000 - 2.500.000/orang' },
+            { label: 'Dengan Champagne', value: 'Rp 2.500.000+/orang' },
+            { label: 'Jam Buka', value: '17:30 - 23:00 (Daily)' },
+            { label: 'Lokasi', value: 'Br. Nagi, Jl. Lanyahan, Petulu, Ubud' },
+            { label: 'Dress Code', value: 'Smart Casual (Recommended)' },
+            { label: 'Booking', value: '📞 +62-361-9082777' }
+        ],
+        cta: [
+            { text: '📞 Hubungi: +62-361-9082777', url: 'tel:+62-361-9082777' },
+            { text: '🔗 Website: aperitif.com', url: 'https://aperitif.com' }
+        ]
+    },
+    'putri-spa': {
+        title: 'Putri Ubud Spa - Honeymoon Package',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150570/search_images/097762bee821f06ee4fbc8ea29dae038da4264e4.jpg',
+        description: 'Spa romantis dengan paket honeymoon khusus yang spesifik untuk couple. Honeymoon Ayurvedic Package 5 jam termasuk aroma therapy massage, Ayurvedic oil ceremony, body scrub with honey, flower bath dengan kelopak bunga, royal facial, dan lunch included. Pengalaman spa yang truly romantic dan relaxing untuk momen honeymoon spesial Anda.',
+        details: [
+            { label: 'Honeymoon Ayurvedic', value: 'Rp 3.590.000/couple' },
+            { label: 'Durasi', value: '5 jam' },
+            { label: 'Included', value: 'Massage, treatment, lunch' },
+            { label: 'Jam Buka', value: '09:00 - 21:00 (Daily)' },
+            { label: 'Lokasi', value: 'Jl. Raya Bisma No 97, Ubud' },
+            { label: 'Booking', value: '📞 +62361 4792561' }
+        ],
+        cta: [
+            { text: '📞 Hubungi: +62361 4792561', url: 'tel:+62361-4792561' },
+            { text: '📱 WhatsApp: +62 819-3622-4944', url: 'https://wa.me/62819-3622-4944' }
+        ]
+    },
+    'aperitif-dinner': {
+        title: 'Candlelight Dinner - Apéritif',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150568/search_images/c8523ffc54ffe6825aec9398db1f1ba6f8d1d75e.jpg',
+        description: 'Pengalaman candlelight dinner romantis yang tak terlupakan di Apéritif Restaurant dengan konsep 1920s elegant. Setiap detail dirancang untuk menciptakan suasana romantic sempurna dengan bunga, lilin, dan personalized service.',
+        details: [
+            { label: 'Tanggal', value: '16 Januari 2026 (Kamis)' },
+            { label: 'Waktu', value: '19:30 - 22:00' },
+            { label: 'Menu', value: '7-Course Degustation' },
+            { label: 'Harga', value: 'Rp 3.8jt - 5jt untuk 2 orang' },
+            { label: 'Fotografi', value: 'Photographer tersedia' },
+            { label: 'Penting', value: '🔥 BOOK SEKARANG - Peak Season!' }
+        ],
+        cta: [
+            { text: '📞 Hubungi: +62-361-9082777', url: 'tel:+62-361-9082777' },
+            { text: '📧 Email untuk booking', url: 'mailto:aperitif@example.com' }
+        ]
+    },
+    'spa-couple': {
+        title: 'Couple Spa Treatment',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150570/search_images/619018458c89443695680c9b83685fa24c642e50.jpg',
+        description: 'Pengalaman spa couple yang romantic dengan treatment khusus untuk honeymoon. Putri Ubud Spa menawarkan Honeymoon Ayurvedic Package yang mencakup berbagai treatment relaksasi dan rejuvenasi untuk kedua pasangan.',
+        details: [
+            { label: 'Tanggal', value: '16 Januari 2026 (Kamis)' },
+            { label: 'Waktu', value: '15:00 - 20:00' },
+            { label: 'Treatment', value: 'Honeymoon Ayurvedic 5 jam' },
+            { label: 'Harga', value: 'Rp 3.590.000 (untuk 2 orang)' },
+            { label: 'Lunch', value: 'Included' },
+            { label: 'Rekomendasi', value: '⭐ Paling Lengkap & Spesifik' }
+        ],
+        cta: [
+            { text: '📞 Hubungi: +62361 4792561', url: 'tel:+62361-4792561' },
+            { text: '📱 WhatsApp untuk booking', url: 'https://wa.me/62819-3622-4944' }
+        ]
+    },
+    'villa-pool': {
+        title: 'Private Pool Villa',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150568/search_images/0e75a712dc7cabeb57a02d3656bab84bb9d2e8e7.jpg',
+        description: 'Ubud Heaven Villa dengan private pool eksklusif yang sempurna untuk quality time berdua di honeymoon Anda. Desain romantic dan intimate dengan taman yang indah.',
+        details: [
+            { label: 'Tanggal Check-in', value: '16 Januari 2026' },
+            { label: 'Tanggal Check-out', value: '17 Januari 2026' },
+            { label: 'Private Pool', value: '✅ Eksklusif & Romantic' },
+            { label: 'Harga', value: 'Rp 850.000 / 1 malam' },
+            { label: 'Ukuran', value: '300 m²' },
+            { label: 'Status', value: '✅ Available' }
+        ],
+        cta: [
+            { text: '🔗 Booking di Airbnb', url: 'https://www.airbnb.com' },
+            { text: '🔗 Booking di Booking.com', url: 'https://www.booking.com' }
+        ]
+    },
+    'wana-karsa-2': {
+        title: 'Wana Karsa Hotel - Room View',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150556/search_images/09a1676b8bb33a47f9f4bb694519c7c170b324a1.jpg',
+        description: 'Kamar hotel Wana Karsa yang dirancang untuk romantic getaway. Dengan pemandangan taman dan fasilitas lengkap untuk kenyamanan maksimal Anda.',
+        details: [
+            { label: 'Tipe Kamar', value: 'Standar atau Deluxe' },
+            { label: 'Harga', value: 'Rp 1.000.000 - 1.500.000' },
+            { label: 'Fasilitas Kamar', value: 'AC, WiFi, TV, Bathroom' },
+            { label: 'Kolam Renang', value: 'Shared pool hotel' },
+            { label: 'Sarapan', value: 'Optional (extra charge)' },
+            { label: 'Check-in', value: '14 Januari 2026' }
+        ],
+        cta: [
+            { text: '🔗 Booking di Traveloka', url: 'https://www.traveloka.com' },
+            { text: '🔗 Booking di Booking.com', url: 'https://www.booking.com' }
+        ]
+    },
+    'candlelight': {
+        title: 'Candlelight Dinner Romantic Setup',
+        image: 'https://pplx-res.cloudinary.com/image/upload/v1768150570/search_images/c25d68b293e0a9ed980605ebb6271f6038be7539.jpg',
+        description: 'Suasana candlelight dinner yang romantic di Apéritif dengan dekorasi penuh perhatian untuk momen spesial honeymoon Anda. Setiap detail dirancang untuk menciptakan pengalaman yang unforgettable.',
+        details: [
+            { label: 'Lokasi', value: 'Apéritif Restaurant, Ubud' },
+            { label: 'Tanggal', value: '16 Januari 2026' },
+            { label: 'Waktu', value: '19:30 - 22:00' },
+            { label: 'Menu', value: '7-Course Premium' },
+            { label: 'Candlelight', value: '✨ Full Setup' },
+            { label: 'Photographer', value: 'Tersedia untuk hire' }
+        ],
+        cta: [
+            { text: '📞 Hubungi: +62-361-9082777', url: 'tel:+62-361-9082777' },
+            { text: '🔗 Website: aperitif.com', url: 'https://aperitif.com' }
+        ]
     }
 };
 
-// Initialize the app
+// Initialize App
 document.addEventListener('DOMContentLoaded', () => {
-    initializeApp();
     startCountdown();
-    showDay(1);
-    setupBudgetCalculator();
     setupMobileMenu();
-    createConfetti();
+    setupEventListeners();
 });
-
-function initializeApp() {
-    // Add smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Add scroll animations
-    window.addEventListener('scroll', handleScroll);
-}
-
-function handleScroll() {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.classList.add('shadow-2xl');
-    } else {
-        nav.classList.remove('shadow-2xl');
-    }
-}
-
-// Mobile Menu
-function setupMobileMenu() {
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenu = document.getElementById('closeMenu');
-
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-    });
-
-    closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-    });
-
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-    });
-}
 
 // Countdown Timer
 function startCountdown() {
     const targetDate = new Date('January 14, 2026 00:00:00').getTime();
     
-    const timer = setInterval(() => {
+    setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
         
-        if (distance < 0) {
-            clearInterval(timer);
-            document.getElementById('countdown').innerHTML = '<h2 class="text-3xl font-bold">🎉 Honeymoon Time!</h2>';
-            return;
+        if (distance > 0) {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        } else {
+            document.getElementById('days').textContent = '0';
+            document.getElementById('hours').textContent = '0';
+            document.getElementById('minutes').textContent = '0';
+            document.getElementById('seconds').textContent = '0';
         }
-        
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        document.getElementById('countdown').innerHTML = `
-            <div class="flex justify-center space-x-6">
-                <div class="text-center">
-                    <div class="text-4xl font-bold">${days}</div>
-                    <div class="text-sm opacity-75">Days</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold">${hours}</div>
-                    <div class="text-sm opacity-75">Hours</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold">${minutes}</div>
-                    <div class="text-sm opacity-75">Minutes</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold">${seconds}</div>
-                    <div class="text-sm opacity-75">Seconds</div>
-                </div>
-            </div>
-        `;
     }, 1000);
 }
 
-// Show Day Content
-function showDay(day) {
-    const data = dayData[day];
-    const content = document.getElementById('dayContent');
+// Mobile Menu
+function setupMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
     
-    // Update button states
-    document.querySelectorAll('.day-btn').forEach((btn, index) => {
-        if (index + 1 === day) {
-            btn.classList.add('bg-pink-500', 'text-white');
-            btn.classList.remove('hover:bg-gray-200');
-        } else {
-            btn.classList.remove('bg-pink-500', 'text-white');
-            btn.classList.add('hover:bg-gray-200');
-        }
-    });
-    
-    // Update content with animation
-    content.style.opacity = '0';
-    setTimeout(() => {
-        content.innerHTML = `
-            <div class="bg-white rounded-2xl shadow-xl p-8">
-                <h3 class="text-3xl font-bold gradient-text mb-2">${data.title}</h3>
-                <p class="text-gray-600 mb-6">${data.date}</p>
-                
-                <div class="space-y-4 mb-8">
-                    ${data.activities.map((activity, index) => `
-                        <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition" style="animation-delay: ${index * 0.1}s">
-                            <div class="bg-${activity.color}-500 text-white rounded-full w-12 h-12 flex items-center justify-center">
-                                <i class="fas ${activity.icon}"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-semibold">${activity.activity}</div>
-                                <div class="text-sm text-gray-500">${activity.time}</div>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-                
-                <div class="bg-gradient-to-r from-pink-100 to-purple-100 rounded-xl p-6">
-                    <h4 class="font-bold text-lg mb-3">Highlights:</h4>
-                    <ul class="space-y-2">
-                        ${data.highlights.map(highlight => `
-                            <li class="flex items-center">
-                                <i class="fas fa-heart text-pink-500 mr-2"></i>
-                                <span>${highlight}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-            </div>
-        `;
-        content.style.opacity = '1';
-    }, 300);
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
 }
 
-// Budget Calculator
-function setupBudgetCalculator() {
-    const inputs = ['accommodation', 'activities', 'dining', 'spa'];
-    
-    inputs.forEach(id => {
-        const input = document.getElementById(id);
-        const valueSpan = document.getElementById(id + '-value');
+// Setup Event Listeners
+function setupEventListeners() {
+    // Day tabs
+    for (let i = 1; i <= 4; i++) {
+        const tab = document.querySelector(`.day-tab:nth-child(${i})`);
+        if (tab) {
+            tab.addEventListener('click', () => showDay(i));
+        }
+    }
+}
+
+// Show Day
+function showDay(dayNumber) {
+    // Hide all days
+    for (let i = 1; i <= 4; i++) {
+        const dayContent = document.getElementById(`day-${i}`);
+        const dayTab = document.querySelector(`.day-tab:nth-child(${i})`);
         
-        input.addEventListener('input', () => {
-            valueSpan.textContent = 'Rp ' + parseInt(input.value).toLocaleString('id-ID');
-            updateBudgetTotal();
-        });
-    });
-}
-
-function updateBudgetTotal() {
-    const accommodation = parseInt(document.getElementById('accommodation').value);
-    const activities = parseInt(document.getElementById('activities').value);
-    const dining = parseInt(document.getElementById('dining').value);
-    const spa = parseInt(document.getElementById('spa').value);
-    
-    const total = accommodation + activities + dining + spa;
-    const percentage = (total / 17000000) * 100;
-    
-    document.getElementById('totalBudget').textContent = 'Rp ' + total.toLocaleString('id-ID');
-    
-    const budgetBar = document.getElementById('budgetBar');
-    budgetBar.style.width = percentage + '%';
-    
-    if (percentage > 100) {
-        budgetBar.classList.add('bg-red-500');
-        budgetBar.classList.remove('bg-white');
-    } else {
-        budgetBar.classList.add('bg-white');
-        budgetBar.classList.remove('bg-red-500');
+        if (dayContent) dayContent.classList.remove('active');
+        if (dayTab) dayTab.classList.remove('active');
     }
-}
-
-// Interactive Tour
-function startInteractiveTour() {
-    showNotification('Starting interactive tour...', 'info');
-    scrollToSection('itinerary');
     
-    // Auto-advance through days
-    let currentDay = 1;
-    const tourInterval = setInterval(() => {
-        if (currentDay <= 4) {
-            showDay(currentDay);
-            currentDay++;
-        } else {
-            clearInterval(tourInterval);
-            showNotification('Tour completed! 🎉', 'success');
-        }
-    }, 3000);
-}
-
-// Save Budget
-function saveBudget() {
-    const budgetData = {
-        accommodation: document.getElementById('accommodation').value,
-        activities: document.getElementById('activities').value,
-        dining: document.getElementById('dining').value,
-        spa: document.getElementById('spa').value,
-        total: document.getElementById('totalBudget').textContent,
-        timestamp: new Date().toISOString()
-    };
+    // Show selected day
+    const selectedDay = document.getElementById(`day-${dayNumber}`);
+    const selectedTab = document.querySelector(`.day-tab:nth-child(${dayNumber})`);
     
-    localStorage.setItem('honeymoonBudget', JSON.stringify(budgetData));
-    showNotification('Budget plan saved successfully! 💾', 'success');
-    createConfetti();
-}
-
-// Call Number
-function callNumber(number) {
-    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android)/)) {
-        window.location.href = `tel:${number}`;
-    } else {
-        navigator.clipboard.writeText(number).then(() => {
-            showNotification(`Number ${number} copied to clipboard! 📞`, 'info');
-        });
-    }
+    if (selectedDay) selectedDay.classList.add('active');
+    if (selectedTab) selectedTab.classList.add('active');
 }
 
 // Scroll to Section
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        section.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
-// Show Notification
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `fixed top-20 right-4 z-50 px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 ${
-        type === 'success' ? 'bg-green-500' : 
-        type === 'error' ? 'bg-red-500' : 
-        'bg-blue-500'
-    } text-white`;
-    notification.textContent = message;
-    notification.style.transform = 'translateX(400px)';
+// Open Accommodation Modal
+function openAccommodationModal(accommodationId) {
+    const data = modalData[accommodationId];
+    if (!data) return;
     
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    setTimeout(() => {
-        notification.style.transform = 'translateX(400px)';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 3000);
+    openModalWithData(data);
 }
 
-// Create Confetti Effect
-function createConfetti() {
-    const colors = ['#ff6b9d', '#e91e63', '#ffd700', '#2ecc71', '#3498db'];
+// Open Destination Modal
+function openDestinationModal(destinationId) {
+    const data = modalData[destinationId];
+    if (!data) return;
     
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDelay = Math.random() * 0.5 + 's';
-            document.body.appendChild(confetti);
-            
-            setTimeout(() => {
-                document.body.removeChild(confetti);
-            }, 3000);
-        }, i * 50);
-    }
+    openModalWithData(data);
 }
 
-// Load saved budget on page load
-window.addEventListener('load', () => {
-    const savedBudget = localStorage.getItem('honeymoonBudget');
-    if (savedBudget) {
-        const budgetData = JSON.parse(savedBudget);
-        document.getElementById('accommodation').value = budgetData.accommodation;
-        document.getElementById('activities').value = budgetData.activities;
-        document.getElementById('dining').value = budgetData.dining;
-        document.getElementById('spa').value = budgetData.spa;
-        
-        // Update displays
-        ['accommodation', 'activities', 'dining', 'spa'].forEach(id => {
-            const input = document.getElementById(id);
-            const valueSpan = document.getElementById(id + '-value');
-            valueSpan.textContent = 'Rp ' + parseInt(input.value).toLocaleString('id-ID');
-        });
-        
-        updateBudgetTotal();
-    }
-});
-
-// Gallery Functions
-function filterGallery(category) {
-    const items = document.querySelectorAll('.gallery-item');
-    const buttons = document.querySelectorAll('.gallery-filter-btn');
+// Open Gallery Modal
+function openGalleryModal(galleryId) {
+    const data = modalData[galleryId];
+    if (!data) return;
     
-    // Update button states
-    buttons.forEach(btn => {
-        btn.classList.remove('bg-pink-500', 'text-white');
-        btn.classList.add('hover:bg-gray-200');
+    openModalWithData(data);
+}
+
+// Open Modal with Data
+function openModalWithData(data) {
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalDetails = document.getElementById('modalDetails');
+    const modalCTA = document.getElementById('modalCTA');
+    
+    modalImage.src = data.image;
+    modalTitle.textContent = data.title;
+    modalDescription.textContent = data.description;
+    
+    // Details
+    modalDetails.innerHTML = '';
+    data.details.forEach(detail => {
+        const detailDiv = document.createElement('div');
+        detailDiv.className = 'modal-detail-item';
+        detailDiv.innerHTML = `
+            <div class="modal-detail-label">${detail.label}</div>
+            <div class="modal-detail-value">${detail.value}</div>
+        `;
+        modalDetails.appendChild(detailDiv);
     });
     
-    event.target.classList.add('bg-pink-500', 'text-white');
-    event.target.classList.remove('hover:bg-gray-200');
-    
-    // Filter items
-    items.forEach(item => {
-        if (category === 'all' || item.dataset.category === category) {
-            item.style.display = 'block';
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'scale(1)';
-            }, 100);
-        } else {
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.8)';
-            setTimeout(() => {
-                item.style.display = 'none';
-            }, 300);
-        }
+    // CTA Buttons
+    modalCTA.innerHTML = '';
+    data.cta.forEach(button => {
+        const btn = document.createElement('a');
+        btn.href = button.url;
+        btn.className = 'btn-booking';
+        btn.textContent = button.text;
+        btn.target = '_blank';
+        btn.rel = 'noopener noreferrer';
+        modalCTA.appendChild(btn);
     });
+    
+    // Show modal
+    modal.classList.add('active');
 }
 
-function openModal(imageSrc, caption) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const captionText = document.getElementById('caption');
-    
-    modal.style.display = 'block';
-    modalImg.src = imageSrc;
-    captionText.innerHTML = `<h3 class="text-2xl font-bold mb-2">${caption}</h3>`;
-    
-    // Add loading animation
-    modalImg.style.opacity = '0';
-    modalImg.onload = function() {
-        modalImg.style.opacity = '1';
-    };
-}
-
+// Close Modal
 function closeModal() {
-    const modal = document.getElementById('imageModal');
-    modal.style.display = 'none';
+    const modal = document.getElementById('modal');
+    modal.classList.remove('active');
 }
 
 // Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('imageModal');
-    if (event.target == modal) {
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('modal');
+    if (e.target === modal) {
         closeModal();
     }
-}
-
-// Add keyboard navigation for modal
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeModal();
-    }
-});
-
-// Enhanced gallery animations
-function initializeGallery() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    galleryItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            item.style.transition = 'all 0.5s ease';
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-}
-
-// Initialize gallery when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    initializeGallery();
 });

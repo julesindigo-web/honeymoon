@@ -1,17 +1,115 @@
 {
-  "name": "honeymoon-ubud-netlify",
+  "name": "honeymoon-ubud-bali-2026",
   "version": "1.0.0",
-  "description": "Interactive Honeymoon Web App - Netlify Version",
+  "description": "Premium Interactive Honeymoon Web App - Ubud Bali 14-17 Januari 2026 | Panduan Lengkap & Tervalidasi dengan Galeri Foto Interaktif",
+  "keywords": [
+    "honeymoon",
+    "ubud",
+    "bali",
+    "travel",
+    "interactive",
+    "web app",
+    "planning",
+    "itinerary",
+    "vacation",
+    "romantic"
+  ],
+  "author": "VoyageMaster Travel Advisor",
+  "license": "MIT",
+  "homepage": "https://honeymoon-ubud-bali.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/honeymoon-ubud-bali"
+  },
   "main": "index.html",
   "scripts": {
     "dev": "netlify dev",
-    "build": "echo 'Build complete'",
-    "deploy": "netlify deploy --prod"
+    "build": "echo 'Build complete - Static site ready'",
+    "deploy": "netlify deploy --prod",
+    "start": "python -m http.server 8000"
   },
-  "keywords": ["honeymoon", "ubud", "bali", "travel", "interactive"],
-  "author": "CODER_ELITE_AGENT",
-  "license": "MIT",
   "devDependencies": {
     "netlify-cli": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "metadata": {
+    "dataValidationDate": "2026-01-11T23:15:00+07:00",
+    "status": "FULLY_VALIDATED",
+    "travelDates": "2026-01-14 to 2026-01-17",
+    "duration": "3 nights, 4 days",
+    "budget": {
+      "total": "Rp 17,000,000",
+      "currency": "IDR",
+      "excludes": [
+        "International flight",
+        "Ground transportation (except Gojek/Grab)"
+      ]
+    },
+    "features": [
+      "Interactive day-by-day itinerary",
+      "Real-time countdown timer",
+      "12+ high-quality destination photos",
+      "Interactive modal galleries",
+      "Verified accommodation details",
+      "Activity & restaurant information",
+      "Budget breakdown calculator",
+      "Direct booking integration",
+      "Mobile-responsive design",
+      "Romantic theme visual design",
+      "Indonesian language support",
+      "Contact & WhatsApp integration"
+    ],
+    "dataSources": [
+      "Traveloka.com (OTA resmi Indonesia)",
+      "Booking.com",
+      "Trip.com",
+      "Official hotel/restaurant websites",
+      "Travel blogs terpercaya",
+      "Recent user reviews (Jan 2026)"
+    ],
+    "verifiedDestinations": [
+      {
+        "name": "Wana Karsa Hotel",
+        "priceVerified": "Rp 1,000,000 - 1,500,000/malam",
+        "verificationDate": "2026-01-11",
+        "source": "Traveloka real-time",
+        "status": "✅ Available"
+      },
+      {
+        "name": "Ubud Monkey Forest",
+        "priceVerified": "Rp 100,000/orang (weekday)",
+        "verificationDate": "2025-12-29",
+        "source": "BaliHolidaySecrets.com",
+        "status": "✅ Operational"
+      },
+      {
+        "name": "Real Bali Swing Bongkasa",
+        "priceVerified": "Rp 650,000/orang (Premium)",
+        "verificationDate": "2026-01-03",
+        "source": "AdeeVaTours.com (OFFICIAL)",
+        "status": "✅ Latest data"
+      },
+      {
+        "name": "Putri Ubud Spa",
+        "priceVerified": "Rp 3,590,000/couple",
+        "verificationDate": "2026-01-11",
+        "source": "PutriUbudSpa.com",
+        "status": "✅ Verified"
+      },
+      {
+        "name": "Apéritif Restaurant",
+        "priceVerified": "Rp 1,900,000 - 2,500,000/orang",
+        "verificationDate": "2026-01-11",
+        "source": "Official website & Instagram",
+        "status": "🔥 Book ASAP"
+      }
+    ]
   }
 }
