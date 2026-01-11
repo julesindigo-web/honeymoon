@@ -209,9 +209,11 @@
             </div>
             <div class="hidden md:flex space-x-6">
                 <a href="#home" class="text-white hover:text-yellow-300 transition">Beranda</a>
-                <a href="#itinerary" class="text-white hover:text-yellow-300 transition">Itinerary</a>
+                <a href="#hotel-showcase" class="text-white hover:text-yellow-300 transition">Hotel</a>
+                <a href="#detailed-itinerary" class="text-white hover:text-yellow-300 transition">Itinerary</a>
                 <a href="#budget" class="text-white hover:text-yellow-300 transition">Budget</a>
                 <a href="#gallery" class="text-white hover:text-yellow-300 transition">Galeri</a>
+                <a href="#detailed-info" class="text-white hover:text-yellow-300 transition">Detail</a>
                 <a href="#contact" class="text-white hover:text-yellow-300 transition">Kontak</a>
             </div>
             <button id="menuToggle" class="text-white">
@@ -224,9 +226,11 @@
     <div id="mobileMenu" class="fixed inset-0 bg-gradient-to-br from-purple-600 to-pink-600 z-40 hidden">
         <div class="flex flex-col items-center justify-center h-full space-y-8">
             <a href="#home" class="text-white text-2xl mobile-link">Beranda</a>
-            <a href="#itinerary" class="text-white text-2xl mobile-link">Itinerary</a>
+            <a href="#hotel-showcase" class="text-white text-2xl mobile-link">Hotel</a>
+            <a href="#detailed-itinerary" class="text-white text-2xl mobile-link">Itinerary</a>
             <a href="#budget" class="text-white text-2xl mobile-link">Budget</a>
             <a href="#gallery" class="text-white text-2xl mobile-link">Galeri</a>
+            <a href="#detailed-info" class="text-white text-2xl mobile-link">Detail</a>
             <a href="#contact" class="text-white text-2xl mobile-link">Kontak</a>
             <button id="closeMenu" class="text-white text-3xl">
                 <i class="fas fa-times"></i>
@@ -238,8 +242,9 @@
     <section id="home" class="min-h-screen hero-bg flex items-center justify-center text-white">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-6xl md:text-8xl font-bold mb-6 floating">
-                Honeymoon Ubud
+                Melki & Fani
             </h1>
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 opacity-90">Honeymoon Ubud</h2>
             <p class="text-2xl md:text-3xl mb-4">14-17 Januari 2026</p>
             <p class="text-xl mb-8 opacity-90">Interactive Premium Experience</p>
             
@@ -449,16 +454,16 @@
                 </div>
                 
                 <!-- Monkey Forest -->
-                <div class="gallery-item" data-category="activities" onclick="openModal('https://monkeyforestubud.com/wp-content/uploads/2023/09/banner-main-lowpress.jpg?x51443', 'Sacred Monkey Forest Sanctuary')">
-                    <img src="https://monkeyforestubud.com/wp-content/uploads/2023/09/banner-main-lowpress.jpg?x51443" alt="Monkey Forest">
+                <div class="gallery-item" data-category="activities" onclick="openModal('https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Sacred Monkey Forest Sanctuary - Ubud')">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Monkey Forest">
                     <div class="gallery-overlay">
                         <h3 class="font-bold">Monkey Forest</h3>
                         <p class="text-sm">Suaka monyet suci</p>
                     </div>
                 </div>
                 
-                <div class="gallery-item" data-category="activities" onclick="openModal('https://monkeyforestubud.com/wp-content/uploads/2023/09/banner-3-new-lowsize.jpg?x51443', 'Monkey Forest - Temple & Nature')">
-                    <img src="https://monkeyforestubud.com/wp-content/uploads/2023/09/banner-3-new-lowsize.jpg?x51443" alt="Monkey Forest Temple">
+                <div class="gallery-item" data-category="activities" onclick="openModal('https://images.unsplash.com/photo-1549180030-48bf0e7b1b4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Monkey Forest Temple & Nature')">
+                    <img src="https://images.unsplash.com/photo-1549180030-48bf0e7b1b4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Monkey Forest Temple">
                     <div class="gallery-overlay">
                         <h3 class="font-bold">Pura & Alam</h3>
                         <p class="text-sm">Keindahan spiritual</p>
@@ -466,11 +471,11 @@
                 </div>
                 
                 <!-- Tegalalang Rice Terraces -->
-                <div class="gallery-item" data-category="activities" onclick="openModal('https://images.unsplash.com/photo-1537953773346-d92cc9c0e1c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Tegalalang Rice Terraces')">
-                    <img src="https://images.unsplash.com/photo-1537953773346-d92cc9c0e1c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tegalalang Rice Terraces">
+                <div class="gallery-item" data-category="activities" onclick="openModal('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Tegalalang Rice Terraces - Ubud')">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tegalalang Rice Terraces">
                     <div class="gallery-overlay">
                         <h3 class="font-bold">Tegalalang</h3>
-                        <p class="text-sm">Sawah terasering</p>
+                        <p class="text-sm">Sawah terasering ikonik</p>
                     </div>
                 </div>
                 
@@ -518,11 +523,11 @@
                 </div>
                 
                 <!-- Campuhan Ridge Walk -->
-                <div class="gallery-item" data-category="activities" onclick="openModal('https://images.unsplash.com/photo-1537953773346-d92cc9c0e1c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Campuhan Ridge Walk')">
-                    <img src="https://images.unsplash.com/photo-1537953773346-d92cc9c0e1c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Campuhan Ridge Walk">
+                <div class="gallery-item" data-category="activities" onclick="openModal('https://images.unsplash.com/photo-1540202404-1b9279c5e66c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', 'Campuhan Ridge Walk - Ubud')">
+                    <img src="https://images.unsplash.com/photo-1540202404-1b9279c5e66c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Campuhan Ridge Walk">
                     <div class="gallery-overlay">
-                        <h3 class="font-bold">Ridge Walk</h3>
-                        <p class="text-sm">Jalan perbukitan</p>
+                        <h3 class="font-bold">Campuhan Ridge Walk</h3>
+                        <p class="text-sm">Jalan setapak perbukitan</p>
                     </div>
                 </div>
             </div>
@@ -535,6 +540,272 @@
         <img class="modal-content" id="modalImage">
         <div id="caption" class="text-white text-center mt-4 px-4"></div>
     </div>
+
+    <!-- Detailed Information Section -->
+    <section id="detailed-info" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center gradient-text mb-12">Informasi Lengkap Honeymoon</h2>
+            
+            <!-- Budget Details -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+                <h3 class="text-3xl font-bold mb-6 gradient-text">💰 Budget Estimasi</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-pink-500">Akomodasi (3 Malam)</h4>
+                        <ul class="space-y-2">
+                            <li class="flex justify-between"><span>Wana Karsa Hotel (2 malam):</span><span class="font-bold">Rp 2.000.000-3.000.000</span></li>
+                            <li class="flex justify-between"><span>Ubud Heaven Villa (1 malam):</span><span class="font-bold">Rp 850.000</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-pink-500">Aktivitas & Dining</h4>
+                        <ul class="space-y-2">
+                            <li class="flex justify-between"><span>Real Bali Swing:</span><span class="font-bold">Rp 125.000-437.500</span></li>
+                            <li class="flex justify-between"><span>Monkey Forest:</span><span class="font-bold">Rp 100.000/orang</span></li>
+                            <li class="flex justify-between"><span>Apéritif Candlelight Dinner:</span><span class="font-bold">Rp 1.500.000-2.000.000</span></li>
+                            <li class="flex justify-between"><span>Putri Ubud Spa:</span><span class="font-bold">Rp 770.000-1.885.000</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-pink-100 rounded-lg">
+                    <p class="text-center text-lg font-bold">Total Estimasi: <span class="text-2xl text-pink-600">Rp 15.460.000-19.240.000</span></p>
+                    <p class="text-center text-sm text-gray-600 mt-2">(Exclude Flight & Ground Transport)</p>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+                <h3 class="text-3xl font-bold mb-6 gradient-text">📞 Informasi Kontak & Referensi</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Hotels -->
+                    <div class="border-l-4 border-pink-500 pl-4">
+                        <h4 class="font-bold text-lg mb-2">🏨 Hotels</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><strong>Wana Karsa Hotel:</strong> +62-361-975743</li>
+                            <li><strong>Booking.com:</strong> <a href="https://www.booking.com/hotel/id/wana-karsa-ubud.id.html" class="text-blue-500 hover:underline" target="_blank">wana-karsa-ubud</a></li>
+                            <li><strong>Traveloka:</strong> <a href="https://www.traveloka.com/id-id/hotel/indonesia/area/ubud-102771/3-star-hotels-in-ubud" class="text-blue-500 hover:underline" target="_blank">Ubud Hotels</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Activities -->
+                    <div class="border-l-4 border-purple-500 pl-4">
+                        <h4 class="font-bold text-lg mb-2">🎯 Activities</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><strong>Monkey Forest:</strong> <a href="https://id.trip.com/guide/attraction/tiket-monkey-forest.html" class="text-blue-500 hover:underline" target="_blank">Tiket Monkey Forest</a></li>
+                            <li><strong>Real Bali Swing:</strong> <a href="https://www.traveloka.com/id-id/activities/indonesia/product/desa-swing-admission-package-deal-bali-8357814524256" class="text-blue-500 hover:underline" target="_blank">Desa Swing Package</a></li>
+                            <li><strong>Tegalalang:</strong> <a href="https://salsawisata.com/tegalalang-rice-terrace/" class="text-blue-500 hover:underline" target="_blank">Tegalalang Tour</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Dining & Spa -->
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-bold text-lg mb-2">🍽️ Dining & Spa</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><strong>Apéritif:</strong> <a href="https://www.aperitif.com" class="text-blue-500 hover:underline" target="_blank">aperitif.com</a></li>
+                            <li><strong>Putri Ubud Spa:</strong> +62361 4792561</li>
+                            <li><strong>Svaha Spa:</strong> <a href="https://svahaspa.com/bisma/treatment/romantic-package" class="text-blue-500 hover:underline" target="_blank">Romantic Package</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Important Notes -->
+            <div class="bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl p-8">
+                <h3 class="text-3xl font-bold mb-6 gradient-text">⚠️ Catatan Penting</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-red-600">🔥 High Season Alert</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Januari adalah peak season di Bali</li>
+                            <li>• Harga hotel bisa naik 50-100%</li>
+                            <li>• Perlu booking jauh hari</li>
+                            <li>• Real Bali Swing sering full booking</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-3 text-green-600">💡 Tips & Rekomendasi</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Booking hotel dengan free cancellation</li>
+                            <li>• Siapkan budget tambahan 20%</li>
+                            <li>• Bawa pakaian romantis untuk dinner</li>
+                            <li>• Dokumentasi momen berharga</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Itinerary Section -->
+    <section id="detailed-itinerary" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center gradient-text mb-12">Itinerary Lengkap</h2>
+            
+            <div class="space-y-8 max-w-4xl mx-auto">
+                <!-- Day 1 -->
+                <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl p-8 border-l-4 border-pink-500">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-600">📅 Hari 1 - 14 Januari 2026</h3>
+                    <h4 class="text-xl font-semibold mb-4">Arrival & Exploration</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm">14:00</span>
+                            <div>
+                                <p class="font-semibold">Check-in Wana Karsa Hotel</p>
+                                <p class="text-sm text-gray-600">Jalan Monkey Forest, Ubud (2 menit jalan kaki ke Monkey Forest)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">16:00</span>
+                            <div>
+                                <p class="font-semibold">Explore Ubud Center</p>
+                                <p class="text-sm text-gray-600">Jalan-jalan di sekitar Ubud, mencari local warung</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">19:00</span>
+                            <div>
+                                <p class="font-semibold">Dinner at Local Warung</p>
+                                <p class="text-sm text-gray-600">Mencoba kuliner lokal Ubud</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm">20:30</span>
+                            <div>
+                                <p class="font-semibold">Evening Walk</p>
+                                <p class="text-sm text-gray-600">Jalan-jalan romantis di sekitar Ubud</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 2 -->
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-8 border-l-4 border-purple-500">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-600">📅 Hari 2 - 15 Januari 2026</h3>
+                    <h4 class="text-xl font-semibold mb-4">Adventure & Nature</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">09:00</span>
+                            <div>
+                                <p class="font-semibold">Monkey Forest Sanctuary</p>
+                                <p class="text-sm text-gray-600">Berinteraksi dengan monyet suci, explore pura</p>
+                                <p class="text-xs text-red-500">🔥 Peak season - Booking recommended</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">11:00</span>
+                            <div>
+                                <p class="font-semibold">Tegalalang Rice Terraces</p>
+                                <p class="text-sm text-gray-600">Sawah terasering ikonik, foto pre-wedding</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm">13:00</span>
+                            <div>
+                                <p class="font-semibold">Lunch at Local Restaurant</p>
+                                <p class="text-sm text-gray-600">Makan siang dengan view sawah</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm">15:00</span>
+                            <div>
+                                <p class="font-semibold">Real Bali Swing</p>
+                                <p class="text-sm text-gray-600">Desa Swing Bongkasa - Rp 125.000-437.500</p>
+                                <p class="text-xs text-red-500">🔥 Sering full booking - Book ASAP!</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm">19:00</span>
+                            <div>
+                                <p class="font-semibold">Candlelight Dinner at Apéritif</p>
+                                <p class="text-sm text-gray-600">Fine dining romantis - Rp 1.500.000-2.000.000</p>
+                                <p class="text-xs text-blue-500">📞 +62-361-9082777 | aperitif.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 3 -->
+                <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 border-l-4 border-blue-500">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">📅 Hari 3 - 16 Januari 2026</h3>
+                    <h4 class="text-xl font-semibold mb-4">Relaxation & Spa</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">08:00</span>
+                            <div>
+                                <p class="font-semibold">Campuhan Ridge Walk</p>
+                                <p class="text-sm text-gray-600">Jalan setapak perbukitan, sunrise photoshoot</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm">10:00</span>
+                            <div>
+                                <p class="font-semibold">Check-out Wana Karsa</p>
+                                <p class="text-sm text-gray-600">Move to Ubud Heaven Villa</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">11:00</span>
+                            <div>
+                                <p class="font-semibold">Check-in Ubud Heaven Villa</p>
+                                <p class="text-sm text-gray-600">Private pool villa, romantic setup</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">13:00</span>
+                            <div>
+                                <p class="font-semibold">Villa Time & Lunch</p>
+                                <p class="text-sm text-gray-600">Quality time di private pool</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">15:00</span>
+                            <div>
+                                <p class="font-semibold">Putri Ubud Spa</p>
+                                <p class="text-sm text-gray-600">Couples treatment - Rp 770.000-1.885.000</p>
+                                <p class="text-xs text-blue-500">📞 +62361 4792561 | Romantic packages available</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm">19:00</span>
+                            <div>
+                                <p class="font-semibold">Romantic Villa Dinner</p>
+                                <p class="text-sm text-gray-600">Private dinner di villa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 4 -->
+                <div class="bg-gradient-to-r from-green-50 to-yellow-50 rounded-2xl p-8 border-l-4 border-green-500">
+                    <h3 class="text-2xl font-bold mb-4 text-green-600">📅 Hari 4 - 17 Januari 2026</h3>
+                    <h4 class="text-xl font-semibold mb-4">Last Moments & Departure</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm">09:00</span>
+                            <div>
+                                <p class="font-semibold">Floating Breakfast</p>
+                                <p class="text-sm text-gray-600">Breakfast di private pool villa</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">11:00</span>
+                            <div>
+                                <p class="font-semibold">Last Minute Shopping</p>
+                                <p class="text-sm text-gray-600">Oleh-oleh khas Ubud</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">13:00</span>
+                            <div>
+                                <p class="font-semibold">Check-out & Departure</p>
+                                <p class="text-sm text-gray-600">End of perfect honeymoon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
@@ -575,7 +846,7 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-lg mb-2">Created with ❤️ by CODER_ELITE_AGENT</p>
+            <p class="text-lg mb-2">Created with ❤️ by Priastama Adiyoga</p>
             <p class="text-sm text-gray-400">© 2026 Honeymoon Ubud Bali - All Rights Reserved</p>
         </div>
     </footer>
