@@ -273,21 +273,42 @@ function setupMobileMenu() {
 
 // Setup Event Listeners
 function setupEventListeners() {
-    // Day tabs
-    for (let i = 1; i <= 4; i++) {
-        const tab = document.querySelector(`.day-tab:nth-child(${i})`);
-        if (tab) {
-            tab.addEventListener('click', () => showDay(i));
-        }
+    // Day tabs - Fix event listener setup
+    const dayTabs = document.querySelectorAll('.day-tab');
+    dayTabs.forEach((tab, index) => {
+        const dayNumber = index + 1;
+        tab.addEventListener('click', () => showDay(dayNumber));
+        console.log(`Setup listener for day ${dayNumber}`);
+    });
+    
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Close mobile menu when clicking on the ×
+    if (navLinks) {
+        navLinks.addEventListener('click', (e) => {
+            if (e.target === navLinks) {
+                navLinks.classList.remove('active');
+            }
+        });
     }
 }
 
 // Show Day
 function showDay(dayNumber) {
+    console.log(`Showing day ${dayNumber}`);
+    
     // Hide all days
     for (let i = 1; i <= 4; i++) {
         const dayContent = document.getElementById(`day-${i}`);
-        const dayTab = document.querySelector(`.day-tab:nth-child(${i})`);
+        const dayTab = document.querySelectorAll('.day-tab')[i-1]; // Fix selector
         
         if (dayContent) dayContent.classList.remove('active');
         if (dayTab) dayTab.classList.remove('active');
@@ -295,10 +316,16 @@ function showDay(dayNumber) {
     
     // Show selected day
     const selectedDay = document.getElementById(`day-${dayNumber}`);
-    const selectedTab = document.querySelector(`.day-tab:nth-child(${dayNumber})`);
+    const selectedTab = document.querySelectorAll('.day-tab')[dayNumber-1]; // Fix selector
     
-    if (selectedDay) selectedDay.classList.add('active');
-    if (selectedTab) selectedTab.classList.add('active');
+    if (selectedDay) {
+        selectedDay.classList.add('active');
+        console.log(`Day ${dayNumber} content activated`);
+    }
+    if (selectedTab) {
+        selectedTab.classList.add('active');
+        console.log(`Day ${dayNumber} tab activated`);
+    }
 }
 
 // Scroll to Section
